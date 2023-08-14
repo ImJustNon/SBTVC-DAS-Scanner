@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "953b151c-3512-41a8-ad70-f73eca80f2dd",
+		"name": "kao success i know",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23982515"
+	},
+	"item": [
+		{
+			"name": "change",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"machine_no\": \"1\",\r\n    \"change_to\": \"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://success-i-know-api.vercel.app/api/status/change",
+					"protocol": "https",
+					"host": [
+						"success-i-know-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"status",
+						"change"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://success-i-know-api.vercel.app/api/status/check/1",
+					"protocol": "https",
+					"host": [
+						"success-i-know-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"status",
+						"check",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
