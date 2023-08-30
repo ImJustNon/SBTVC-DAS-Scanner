@@ -5,15 +5,15 @@
 
 // Wifi setup
 const char* ssid = "Galaxy A24";
-const char* password = "gulnwzamakmak";
+const char* password = "disconnected";
 
 // api setup
-const char* serverUrl = "http://45.141.27.54:9090/api/test/esp";
+const char* serverUrl = "http://45.141.27.54:1756/api/bridge/sbtvc-das/api/auth/esp/auth_reseiver";
 const char* key = "nonlnwza";
 
 // Scanner setup
-const int scannerRxPin = D13;
-const int scannerTxPin = D12;
+const int scannerRxPin = D6;
+const int scannerTxPin = D5;
 
 // SofwareSerial setup
 SoftwareSerial mySerial(scannerTxPin, scannerRxPin); // TX , RX
@@ -21,10 +21,10 @@ char a[128];
 int dataIndex = 0;
 
 // led status setup
-const int errorLedPin = D8;
-const int warningLedPin = D9;
-const int successLedPin = D10;
-const int readyLedPin = D7;
+const int errorLedPin = D2;
+const int warningLedPin = D3;
+const int successLedPin = D4;
+const int readyLedPin = D1;
 
 void setup() {
   // board serial setup
@@ -122,8 +122,11 @@ void HttpRequest(String auth_token, String type, String for_){
     WiFiClient client; // Use WiFiClientSecure for HTTPS
     HTTPClient http;
 
+    http.setTimeout(30000); // 10 seconds
+    
     // Construct the JSON payload
     DynamicJsonDocument jsonDoc(256);
+    jsonDoc["secret_key"] = String(key);
     jsonDoc["location_auth_id"] = auth_token;
     jsonDoc["type"] = type;
     jsonDoc["for_"] = for_;
